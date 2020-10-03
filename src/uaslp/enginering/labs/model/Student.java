@@ -1,6 +1,6 @@
 package uaslp.enginering.labs.model;
 
-public class Student {
+public class Student{
     private String name;
 
     public Student(String name) {

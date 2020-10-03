@@ -1,12 +1,15 @@
 package uaslp.enginering.labs.list;
 
-//"<T>" Significa tipo genérico
-public class ArrayList<T> {
+import uaslp.enginering.labs.list.model.List;
+import uaslp.enginering.labs.list.model.Student;
 
-    public enum InsertPosition {
-        BEFORE,
-        AFTER
-    }
+//"<T>" Significa tipo genérico
+public class ArrayList implements List{
+
+    public static final int DEFAULT_SIZE = 2;
+
+    private Student[] elements;
+    private int lastIndex;
 
 
     public class Iterator {
@@ -17,17 +20,11 @@ public class ArrayList<T> {
             return currentIndex < lastIndex;
         }
 
-        public T next() {
-            return (T)elements[currentIndex++];
+        public Student next() {
+            return elements[currentIndex++];
         }
 
     }
-
-
-    public static final int DEFAULT_SIZE = 2;
-
-    private Object[] elements;
-    private int lastIndex;
 
     public ArrayList() {
         this(DEFAULT_SIZE);
@@ -35,10 +32,10 @@ public class ArrayList<T> {
 
     public ArrayList(final int initialSize) {
         lastIndex = 0;
-        elements = new Object[initialSize];
+        elements = new Student[initialSize];
     }
 
-    public void add(final T element) {
+    public void add(Student element) {
 
         if (lastIndex == elements.length) {
             increaseArraySize();
@@ -47,7 +44,7 @@ public class ArrayList<T> {
         elements[lastIndex++] = element;
     }
 
-    public void delete(final T element) {
+    public void delete(Student element) {
         for (int index = 0; index < lastIndex; index++) {
             if (elements[index].equals(element)) {
                 delete(index);
@@ -56,7 +53,7 @@ public class ArrayList<T> {
         }
     }
 
-    public void delete(final int index) {
+    public void delete(int index) {
         if (lastIndex - index > 0 && index >= 0) {
             lastIndex--;
             System.arraycopy(elements, index + 1, elements, index, lastIndex - index);
@@ -71,11 +68,11 @@ public class ArrayList<T> {
         return lastIndex;
     }
 
-    public T getAt(final int index) {
-        return index < lastIndex ? (T)elements[index] : null;
+    public Student getAt(int index) {
+        return index < lastIndex ? elements[index] : null;
     }
 
-    public void insert(final T reference, final T newStudent, final InsertPosition insertPosition) {
+    public void insert(Student reference,Student newStudent,List.Position insertPosition) {
 
         if (lastIndex == elements.length) {
             increaseArraySize();
@@ -83,7 +80,7 @@ public class ArrayList<T> {
 
         for (int index = 0; index < lastIndex; index++) {
             if (elements[index].equals(reference)) {
-                if (insertPosition.equals(InsertPosition.BEFORE)) {
+                if (insertPosition.equals(Position.BEFORE)) {
                     for (int j = lastIndex; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
@@ -101,7 +98,7 @@ public class ArrayList<T> {
     }
 
     private void increaseArraySize() {
-        final Object[] newArray = new Object[elements.length * 2];
+        final Student[] newArray = new Student[elements.length * 2];
 
         System.arraycopy(elements, 0, newArray, 0, elements.length);
 

@@ -1,6 +1,7 @@
 package uaslp.enginering.labs.list;
 
 import org.junit.jupiter.api.Test;
+
 import uaslp.enginering.labs.list.model.Student;
 
 import static org.junit.jupiter.api.Assertions.*;

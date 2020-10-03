@@ -1,17 +1,13 @@
 package uaslp.enginering.labs.list;
 
+import uaslp.enginering.labs.list.model.List;
 import uaslp.enginering.labs.list.model.Student;
 
-public class LinkedList {
+public class LinkedList implements List{
 
     private int lastIndex;
     private Node front;
     private Node tail;
-
-    public enum Position {
-        BEFORE,
-        AFTER
-    }
 
     public class Iterator {
 
@@ -46,8 +42,8 @@ public class LinkedList {
         }
     }
 
-    public void add(Student student) {
-        Node newNode = new Node(student);
+    public void add(Student element) {
+        Node newNode = new Node((Student) element);
         if (front == null && tail == null) {
             front = tail = newNode;
         } else {
@@ -62,11 +58,11 @@ public class LinkedList {
         lastIndex++;
     }
 
-    public void delete(Student student) {
+    public void delete(Student element) {
         if (front.equals(tail)) front = tail = null;
         else {
             Node temp = front;
-            while (temp.getNext() != null && !temp.getStudent().equals(student)) {
+            while (temp.getNext() != null && !temp.getStudent().equals(element)) {
                 temp = temp.getNext();
             }
             if (temp.equals(front)) {
@@ -144,16 +140,16 @@ public class LinkedList {
         return null;
     }
 
-    public void insert(Student reference, Student newStudent, Position position) {
+    public void insert(Student  reference, Student newStudent, List.Position insertPosition) {
         Node referenced = new Node(reference);
         Node newNode = new Node(newStudent);
         if (front != null) {
             Node temp = front;
-            while (temp.getNext() != null && !temp.getStudent().getName().equals(reference.getName())) {
+            while (temp.getNext() != null && !temp.getStudent().getName().equals(((Student) reference).getName())) {
                 temp = temp.getNext();
             }
             if (temp.equals(front)) {
-                if (position.equals(Position.BEFORE)) {
+                if (insertPosition.equals(Position.BEFORE)) {
                     front = newNode;
                     newNode.setNext(temp);
                     temp.setPrevious(newNode);
@@ -170,7 +166,7 @@ public class LinkedList {
                 }
             }
             if (temp.equals(tail)) {
-                if (position.equals(Position.AFTER)) {
+                if (insertPosition.equals(Position.AFTER)) {
                     newNode.setPrevious(temp);
                     temp.setNext(newNode);
                     tail = newNode;
@@ -186,7 +182,7 @@ public class LinkedList {
                     return;
                 }
             }
-            if (position.equals(Position.AFTER)) {
+            if (insertPosition.equals(Position.AFTER)) {
                 Node temp2 = temp.getNext();
                 newNode.setNext(temp2);
                 temp.setNext(newNode);
