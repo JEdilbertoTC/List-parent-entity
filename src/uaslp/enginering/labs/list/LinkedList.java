@@ -9,7 +9,7 @@ public class LinkedList implements List{
     private Node front;
     private Node tail;
 
-    public class Iterator {
+    public class Iterator implements uaslp.enginering.labs.list.Iterator {
 
         private Node node = front;
 

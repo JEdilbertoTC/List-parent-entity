@@ -5,12 +5,12 @@ import uaslp.enginering.labs.list.model.Student;
 
 public class Main{
     public static void main(String[] args){
-        prueba1();
-        System.out.println("--------------------------");
-        prueba2();
+        //prueba1();
+        //System.out.println("--------------------------");
+        //prueba2();
     }
     public static void prueba1(){
-        List linkedList = new LinkedList();
+       /* List linkedList = new LinkedList();
         Student reference = new Student("Torres");
         Student reference2 = new Student("Jose");
         Student reference3 = new Student("Edilberto");
@@ -37,7 +37,7 @@ public class Main{
         while (iterator.hasNext()) {
             Student student = iterator.next();
             System.out.println(student.getName());
-        }
+        }*/
     }
 }
 

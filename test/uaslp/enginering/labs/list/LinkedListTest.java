@@ -2,6 +2,7 @@ package uaslp.enginering.labs.list;
 
 import org.junit.jupiter.api.Test;
 
+import uaslp.enginering.labs.list.model.List;
 import uaslp.enginering.labs.list.model.Student;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -257,10 +258,10 @@ public class LinkedListTest{
     @Test
     public void givenEmptyList_whenGetIterator_thenIteratorIsEmpty(){
         // Given:
-        LinkedList linkedList = new LinkedList();
+        List linkedList = new LinkedList();
 
         // When:
-        LinkedList.Iterator iterator = linkedList.getIterator();
+        Iterator iterator = linkedList.getIterator();
 
         // Then:
         assertNotNull(iterator);
@@ -271,12 +272,12 @@ public class LinkedListTest{
     @Test
     public void givenListWithOneElement_whenGetIterator_thenIteratorHasOneNext(){
         // Given:
-        LinkedList LinkedList = new LinkedList();
+        List LinkedList = new ArrayList();
 
         LinkedList.add(new Student("Ivan"));
 
         // When:
-        LinkedList.Iterator iterator = LinkedList.getIterator();
+        Iterator iterator = LinkedList.getIterator();
 
         // Then:
         assertNotNull(iterator);

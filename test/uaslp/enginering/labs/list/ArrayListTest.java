@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import uaslp.enginering.labs.list.model.List;
 import uaslp.enginering.labs.list.model.Student;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayListTest {
@@ -275,10 +276,10 @@ public class ArrayListTest {
     @Test
     public void givenEmptyList_whenGetIterator_thenIteratorIsEmpty(){
         // Given:
-        ArrayList arrayList = new ArrayList();
+        List arrayList = new ArrayList();
 
         // When:
-        ArrayList.Iterator iterator = arrayList.getIterator();
+        Iterator iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);
@@ -289,13 +290,13 @@ public class ArrayListTest {
     @Test
     public void givenListWithOneElement_whenGetIterator_thenIteratorHasOneNext(){
         // Given:
-        ArrayList arrayList = new ArrayList();
+        List arrayList = new ArrayList();
 
         arrayList.add(new Student("Ivan"));
 
         // When:
 
-        ArrayList.Iterator iterator = arrayList.getIterator();
+        Iterator iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);

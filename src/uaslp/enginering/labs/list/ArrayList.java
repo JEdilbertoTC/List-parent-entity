@@ -12,7 +12,7 @@ public class ArrayList implements List{
     private int lastIndex;
 
 
-    public class Iterator {
+    public class Iterator implements uaslp.enginering.labs.list.Iterator {
 
         private int currentIndex;
 
